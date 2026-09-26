@@ -15,12 +15,13 @@ The CNN has the better held-out accuracy and smaller train/test gap. Both models
 
 ## Project files
 
+- `Fashion_MNIST_Comparison.py` is the standalone Python program that trains both models, evaluates every split, saves confusion-matrix plots and CSV metrics, and writes your local PDF report with its code appendix.
 - `Fashion_MNIST_Comparison.ipynb` contains the complete executed experiment, analysis, tables, confusion matrices, and code appendix.
 - `main.py` is the separate live-camera/image demo. It loads `Model/keras_model.h5` and `Model/labels.txt`.
 - `Model/` contains the small model export and class labels needed by the demo.
 - `requirements.txt` lists the tested Python packages.
 
-The live-camera demo is not the CNN trained in the notebook. Fashion-MNIST contains 28×28 grayscale product thumbnails, not photographs of clothing in a room; benchmark accuracy should not be interpreted as real-world camera accuracy. The supplied `.tm` archive contains only T-shirt images and is not needed to run the benchmark.
+The live-camera demo is not the CNN trained by the comparison script. Fashion-MNIST contains 28×28 grayscale product thumbnails, not photographs of clothing in a room; benchmark accuracy should not be interpreted as real-world camera accuracy. The supplied `.tm` archive contains only T-shirt images and is not needed to run the benchmark.
 
 ## Setup
 
@@ -33,7 +34,15 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-In VS Code, open `Fashion_MNIST_Comparison.ipynb`, select the `.venv` Python kernel, and run all cells from top to bottom. The notebook downloads the canonical Fashion-MNIST data through Keras on its first run and caches it outside this repository. The test set is reserved for final evaluation.
+Run the complete comparison from a terminal:
+
+```bash
+python Fashion_MNIST_Comparison.py
+```
+
+The script trains the CNN (10 epochs, batch size 126, learning rate 0.001) and Random Forest on the official 60,000-image training set, then evaluates on the untouched 10,000-image test set. It writes metric CSVs and plots under `outputs/` and creates `Fashion_MNIST_Report.pdf` locally. Both generated locations are ignored by Git, so the report stays on your computer. The first run downloads and caches Fashion-MNIST outside the repository.
+
+The executed notebook is also available as a walkthrough; in VS Code, select the `.venv` Python kernel and run its cells from top to bottom.
 
 If the automatic dataset download fails because of a local certificate issue, download the four files listed in the Fashion-MNIST repository's [Get the Data section](https://github.com/zalandoresearch/fashion-mnist#get-the-data) into `~/.keras/datasets/fashion-mnist/`, then rerun the notebook.
 

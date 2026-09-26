@@ -6,5 +6,6 @@ __pycache__/
 .keras/
 data/
 datasets/
+outputs/
 *.py[cod]
 Fashion_MNIST_Report.pdf
