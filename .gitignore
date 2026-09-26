@@ -8,4 +8,4 @@ data/
 datasets/
 outputs/
 *.py[cod]
-Fashion_MNIST_Report.pdf
+Fashion_MNIST_Report*.pdf
