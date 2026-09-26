@@ -7,3 +7,4 @@ __pycache__/
 data/
 datasets/
 *.py[cod]
+Fashion_MNIST_Report.pdf
